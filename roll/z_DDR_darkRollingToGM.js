@@ -105,6 +105,61 @@ try {
                 }
                 return rply;
                 break;
+            case /(^[.]drgm$)/i.test(mainMsg[0]) && /^myname$/i.test(mainMsg[1]):
+                //
+                //增加自定義關鍵字
+                // .drgm[0] addgm[1] 代替名字[2]  
+                let checkifsamename = 0
+                if (channelid)
+                    groupid = channelid
+                //因為在DISCROD以頻道作單位
+                if (groupid && userrole >= 1 && userid) {
+                    if (rply.trpgDarkRollingfunction)
+                        for (var i = 0; i < rply.trpgDarkRollingfunction.length; i++) {
+                            if (rply.trpgDarkRollingfunction[i].groupid == groupid) {
+                                // console.log('checked1')
+                                for (var a = 0; a < rply.trpgDarkRollingfunction[i].trpgDarkRollingfunction.length; a++) {
+                                    if (rply.trpgDarkRollingfunction[i].trpgDarkRollingfunction[a].userid == userid) {
+                                        //   console.log('checked')
+                                        checkifsamename = 1
+                                    }
+                                }
+                            }
+                        }
+                    let temp = {
+                        groupid: groupid,
+                        trpgDarkRollingfunction: [{
+                            userid: userid,
+                            //diyName: mainMsg[2] || "",
+                            displayname: displayname
+                        }]
+                        //|| displayname
+
+                    }
+                    //console.log(temp)
+                    if (checkifsamename == 0) {
+                        records.pushtrpgDarkRollingfunction('trpgDarkRolling', temp, () => {
+                            records.get('trpgDarkRolling', (msgs) => {
+                                rply.trpgDarkRollingfunction = msgs
+                                // console.log(rply);
+                            })
+
+                        })
+                        rply.text = '新增成功: ' + (displayname ||
+                            "")
+                    } else rply.text = '新增失敗. 你已在GM列表'
+                } else {
+                    rply.text = '新增失敗.'
+                    if (!userid)
+                        rply.text += ' 沒有個人ID....如果是LINE的話, 要先LIKE 這個BOT.'
+                    if (!groupid)
+                        //&& !channelid
+                        rply.text += ' 不在群組.'
+                    if (groupid && userrole < 1)
+                        rply.text += ' 只有GM以上才可新增.'
+                }
+                return rply;
+                break;
             case /(^[.]drgm$)/i.test(mainMsg[0]) && /^del$/i.test(mainMsg[1]) && /^all$/i.test(mainMsg[2]):
                 //    
                 //刪除所有自定義關鍵字
