@@ -37,7 +37,7 @@ if (process.env.mongoURL) {
             contact: String
         }]
     });
-    const GroupSetting = mongoose.model('GroupSetting', {
+    const GroupSetting = mongoose.model('GroupSetting', { 
         groupid: String,
         togm: Array,
         user: [{
