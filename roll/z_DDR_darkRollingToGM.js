@@ -109,6 +109,7 @@ try {
                 //
                 //增加自定義關鍵字
                 // .drgm[0] addgm[1] 代替名字[2]  
+                console.log(groupid)
                 let checkifsamename = 0
                 if (channelid)
                     groupid = channelid
@@ -130,21 +131,15 @@ try {
                         groupid: groupid,
                         trpgDarkRollingfunction: [{
                             userid: userid,
-                            //diyName: mainMsg[2] || "",
+                            diyName: mainMsg[2] || "",
                             displayname: displayname
                         }]
                         //|| displayname
 
                     }
                     //console.log(temp)
-                    if (checkifsamename == 0) {
-                        records.pushtrpgDarkRollingfunction('trpgDarkRolling', temp, () => {
-                            records.get('trpgDarkRolling', (msgs) => {
-                                rply.trpgDarkRollingfunction = msgs
-                                // console.log(rply);
-                            })
-
-                        })
+                    if (checkifsamename == 0 || checkifsamename == 1) {
+                        records.settrpgDarkRollingfunction('trpgDarkRolling', temp, () => {})
                         rply.text = '新增成功: ' + (displayname ||
                             "")
                     } else rply.text = '新增失敗. 你已在GM列表'

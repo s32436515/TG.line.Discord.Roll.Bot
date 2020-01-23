@@ -8,7 +8,7 @@ const schema = require('./core-schema.js');
 let instance;
 let data = [];
 let MAX = 50000;
-
+//{ "_id": "oranges", "qty": { "in stock": 8, "ordered": 12 } }
 class Records extends EventEmitter {
     constructor() {
         super();
