@@ -9,7 +9,7 @@ try {
         rply.trpgDarkRollingfunction = msgs
     })
     gameName = function () {
-        return '(公測中)暗骰GM功能 .drgm (addgm del show) dr ddr dddr'
+        return '(公測中)暗骰GM功能 .drgm (addgm del show name) dr ddr dddr'
     }
     gameType = function () {
         return 'trpgDarkRolling:hktrpg'
