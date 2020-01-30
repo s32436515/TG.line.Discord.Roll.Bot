@@ -110,7 +110,7 @@ try {
                 //增加自定義關鍵字
                 // .drgm[0] addgm[1] 代替名字[2]  
                 console.log(groupid)
-                let checkifsamename = 0
+                let checkifsamename2 = 0
                 if (channelid)
                     groupid = channelid
                 //因為在DISCROD以頻道作單位
@@ -122,7 +122,7 @@ try {
                                 for (var a = 0; a < rply.trpgDarkRollingfunction[i].trpgDarkRollingfunction.length; a++) {
                                     if (rply.trpgDarkRollingfunction[i].trpgDarkRollingfunction[a].userid == userid) {
                                         //   console.log('checked')
-                                        checkifsamename = 1
+                                        checkifsamename2 = 1
                                     }
                                 }
                             }
@@ -138,7 +138,7 @@ try {
 
                     }
                     //console.log(temp)
-                    if (checkifsamename == 0 || checkifsamename == 1) {
+                    if (checkifsamename2 == 0 || checkifsamename2 == 1) {
                         records.settrpgDarkRollingfunction('trpgDarkRolling', temp, () => {})
                         rply.text = '新增成功: ' + (displayname ||
                             "")
