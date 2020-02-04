@@ -351,6 +351,28 @@ class Records extends EventEmitter {
             // return JSON.stringify(doc).toString();
         });
     }
+    //{ "_id": "bananas", "qty": 7 }
+    //{ "_id": "oranges", "qty": { "in stock": 8, "ordered": 12 } }
+    settrpgMynamefunction(dbbase, msg, callback) {
+        schema[dbbase].findOneAndUpdate({
+            "groupid": msg.groupid,
+            "trpgDarkRollingfunction": {
+                "userid": msg.userid
+            }
+        }, {
+            $set: {
+                trpgDarkRollingfunction: msg.trpgDarkRollingfunction
+            }
+        }, {
+            upsert: true
+        }, (err, doc) => {
+            if (err) {
+                console.log("Something wrong when updating data!");
+            } else
+                //    callback();
+                return JSON.stringify(doc).toString();
+        });
+    }
     /*
             trpgLevelSystem開始
         */
