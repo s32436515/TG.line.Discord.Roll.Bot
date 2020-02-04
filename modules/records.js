@@ -358,7 +358,9 @@ class Records extends EventEmitter {
             "trpgDarkRollingfunction.userid": msg.trpgDarkRollingfunction.userid
         }, {
             $set: {
-                trpgDarkRollingfunction: msg.trpgDarkRollingfunction
+                "trpgDarkRollingfunction.$.userid": msg.trpgDarkRollingfunction.userid,
+                "trpgDarkRollingfunction.$.diyName": msg.trpgDarkRollingfunction.diyName,
+                "trpgDarkRollingfunction.$.displayname": msg.trpgDarkRollingfunction.displayname
             }
         }, {
             //upsert: true
@@ -374,11 +376,11 @@ class Records extends EventEmitter {
                     }
                 }, {
                     upsert: true
-                }, (err, doc) => {
-                    if (err) {
+                }, (err2, doc2) => {
+                    if (err2) {
                         console.log("Something wrong when updating data!");
                     } else {
-                        console.log(doc);
+                        console.log(doc2);
                         return JSON.stringify(doc).toString();
                     }
                 });
