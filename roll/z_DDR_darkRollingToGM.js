@@ -109,7 +109,7 @@ try {
                 //
                 //增加自定義關鍵字
                 // .drgm[0] addgm[1] 代替名字[2]  
-                console.log(groupid)
+                // console.log(groupid)
                 let checkifsamename2 = 0
                 if (channelid)
                     groupid = channelid

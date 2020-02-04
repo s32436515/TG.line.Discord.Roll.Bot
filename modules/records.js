@@ -361,13 +361,28 @@ class Records extends EventEmitter {
                 trpgDarkRollingfunction: msg.trpgDarkRollingfunction
             }
         }, {
-            upsert: true
+            //upsert: true
         }, (err, doc) => {
             if (err) {
                 console.log("Something wrong when updating data!");
-            } else
-                //    callback();
-                return JSON.stringify(doc).toString();
+            } else if (!doc) {
+                schema[dbbase].findOneAndUpdate({
+                    "groupid": msg.groupid,
+                }, {
+                    $push: {
+                        trpgDarkRollingfunction: msg.trpgDarkRollingfunction
+                    }
+                }, {
+                    upsert: true
+                }, (err, doc) => {
+                    if (err) {
+                        console.log("Something wrong when updating data!");
+                    } else {
+                        console.log(doc);
+                        return JSON.stringify(doc).toString();
+                    }
+                });
+            }
         });
     }
     /*
