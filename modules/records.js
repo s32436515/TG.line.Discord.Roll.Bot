@@ -351,14 +351,11 @@ class Records extends EventEmitter {
             // return JSON.stringify(doc).toString();
         });
     }
-    //{ "_id": "bananas", "qty": 7 }
-    //{ "_id": "oranges", "qty": { "in stock": 8, "ordered": 12 } }
+    //{"groupid":"-339333331","trpgDarkRollingfunction.userid": "1128502341"}
     settrpgMynamefunction(dbbase, msg, callback) {
         schema[dbbase].findOneAndUpdate({
             "groupid": msg.groupid,
-            "trpgDarkRollingfunction": {
-                "userid": msg.userid
-            }
+            "trpgDarkRollingfunction.userid": msg.trpgDarkRollingfunction.userid
         }, {
             $set: {
                 trpgDarkRollingfunction: msg.trpgDarkRollingfunction

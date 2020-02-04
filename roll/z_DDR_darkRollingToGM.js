@@ -129,17 +129,18 @@ try {
                         }
                     let temp = {
                         groupid: groupid,
-                        trpgDarkRollingfunction: [{
+                        trpgDarkRollingfunction: {
                             userid: userid,
                             diyName: mainMsg[2] || "",
                             displayname: displayname
-                        }]
+                        }
                         //|| displayname
 
                     }
                     //console.log(temp)
+
                     if (checkifsamename2 == 0 || checkifsamename2 == 1) {
-                        records.settrpgDarkRollingfunction('trpgDarkRolling', temp, () => {})
+                        records.settrpgMynamefunction('trpgDarkRolling', temp, (a) => console.log(a))
                         rply.text = '新增成功: ' + (displayname ||
                             "")
                     } else rply.text = '新增失敗. 你已在GM列表'
