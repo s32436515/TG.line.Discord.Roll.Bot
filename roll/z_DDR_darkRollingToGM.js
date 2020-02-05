@@ -53,7 +53,7 @@ try {
             case /(^[.]drgm$)/i.test(mainMsg[0]) && /^addgm$/i.test(mainMsg[1]):
                 //
                 //增加自定義關鍵字
-                // .drgm[0] addgm[1] 代替名字[2]  
+                // .drgm[0] addgm[1] 
                 let checkifsamename = 0
                 if (channelid)
                     groupid = channelid
@@ -108,7 +108,7 @@ try {
             case /(^[.]drgm$)/i.test(mainMsg[0]) && /^myname$/i.test(mainMsg[1]):
                 //
                 //增加自定義關鍵字
-                // .drgm[0] addgm[1] 代替名字[2]  
+                // .drgm[0] myname[1] 代替名字[2]  
                 // console.log(groupid)
                 let checkifsamename2 = 0
                 if (channelid)
